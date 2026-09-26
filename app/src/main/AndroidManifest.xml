@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name=".FinanceApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ActiviteFinanca">
+
+        <!-- 1. Pantalla de bienvenida animada (punto de entrada) -->
+        <activity
+            android:name=".ui.activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2. Introducción de 3 pasos (solo la primera vez) -->
+        <activity
+            android:name=".ui.activities.OnboardingActivity"
+            android:exported="false" />
+
+        <!-- 3. Host de los 6 Fragments -->
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 4. Detalle de una divisa -->
+        <activity
+            android:name=".ui.activities.CurrencyDetailActivity"
+            android:exported="false"
+            android:label="@string/title_detail_currency"
+            android:parentActivityName=".ui.activities.MainActivity" />
+
+        <!-- 5. Detalle de un concepto macroeconómico -->
+        <activity
+            android:name=".ui.activities.ConceptDetailActivity"
+            android:exported="false"
+            android:label="@string/title_detail_concept"
+            android:parentActivityName=".ui.activities.MainActivity" />
+
+        <!-- 6. Ajustes -->
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_settings"
+            android:parentActivityName=".ui.activities.MainActivity" />
+    </application>
+
+</manifest>

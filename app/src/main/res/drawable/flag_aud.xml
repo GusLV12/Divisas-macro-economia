@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bandera simplificada generada para ActiviteFinance -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="90dp"
+    android:height="60dp"
+    android:viewportWidth="90"
+    android:viewportHeight="60">
+    <path android:fillColor="#012169" android:pathData="M0,0 H90 V60 H0 Z"/>
+    <group android:scaleX="0.5" android:scaleY="0.5">
+        <clip-path android:pathData="M0,0 H90 V60 H0 Z"/>
+        <path android:fillColor="#012169" android:pathData="M0,0 H90 V60 H0 Z"/>
+        <path android:strokeColor="#FFFFFF" android:strokeWidth="12" android:strokeLineCap="butt" android:pathData="M0,0 L90,60 M0,60 L90,0"/>
+        <path android:strokeColor="#C8102E" android:strokeWidth="4" android:strokeLineCap="butt" android:pathData="M0,0 L90,60 M0,60 L90,0"/>
+        <path android:fillColor="#FFFFFF" android:pathData="M37,0 H53 V60 H37 Z"/>
+        <path android:fillColor="#FFFFFF" android:pathData="M0,22 H90 V38 H0 Z"/>
+        <path android:fillColor="#C8102E" android:pathData="M40,0 H50 V60 H40 Z"/>
+        <path android:fillColor="#C8102E" android:pathData="M0,25 H90 V35 H0 Z"/>
+    </group>
+    <group android:translateX="22.5" android:translateY="45" android:scaleX="6.5" android:scaleY="6.5"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+    <group android:translateX="67.5" android:translateY="50" android:scaleX="3.2" android:scaleY="3.2"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+    <group android:translateX="67.5" android:translateY="12" android:scaleX="3.2" android:scaleY="3.2"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+    <group android:translateX="57" android:translateY="28" android:scaleX="3.2" android:scaleY="3.2"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+    <group android:translateX="78" android:translateY="25" android:scaleX="3.2" android:scaleY="3.2"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+    <group android:translateX="72.5" android:translateY="35" android:scaleX="1.8" android:scaleY="1.8"><path android:fillColor="#FFFFFF" android:pathData="M0,-1 L0.2245,-0.309 L0.9511,-0.309 L0.3633,0.118 L0.5878,0.809 L0,0.382 L-0.5878,0.809 L-0.3633,0.118 L-0.9511,-0.309 L-0.2245,-0.309 Z"/></group>
+</vector>

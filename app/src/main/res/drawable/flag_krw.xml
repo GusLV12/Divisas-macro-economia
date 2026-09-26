@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bandera simplificada generada para ActiviteFinance -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="90dp"
+    android:height="60dp"
+    android:viewportWidth="90"
+    android:viewportHeight="60">
+    <path android:fillColor="#FFFFFF" android:pathData="M0,0 H90 V60 H0 Z"/>
+    <path android:fillColor="#0047A0" android:pathData="M33.000,30.000 a12.000,12.000 0 1,0 24.000,0 a12.000,12.000 0 1,0 -24.000,0 "/>
+    <path android:fillColor="#CD2E3A" android:pathData="M33,30 A12,12 0 0,1 57,30 A6,6 0 0,1 45,30 A6,6 0 0,0 33,30 Z"/>
+    <group android:translateX="17" android:translateY="11" android:rotation="-55.8">
+        <path android:fillColor="#000000" android:pathData="M-4,-3.40 H4 V-1.80 H-4 Z M-4,-0.80 H4 V0.80 H-4 Z M-4,1.80 H4 V3.40 H-4 Z "/>
+    </group>
+    <group android:translateX="73" android:translateY="49" android:rotation="-55.8">
+        <path android:fillColor="#000000" android:pathData="M-4,-3.40 H-0.6 V-1.80 H-4 Z M0.6,-3.40 H4 V-1.80 H0.6 Z M-4,-0.80 H-0.6 V0.80 H-4 Z M0.6,-0.80 H4 V0.80 H0.6 Z M-4,1.80 H-0.6 V3.40 H-4 Z M0.6,1.80 H4 V3.40 H0.6 Z "/>
+    </group>
+    <group android:translateX="73" android:translateY="11" android:rotation="55.8">
+        <path android:fillColor="#000000" android:pathData="M-4,-3.40 H-0.6 V-1.80 H-4 Z M0.6,-3.40 H4 V-1.80 H0.6 Z M-4,-0.80 H4 V0.80 H-4 Z M-4,1.80 H-0.6 V3.40 H-4 Z M0.6,1.80 H4 V3.40 H0.6 Z "/>
+    </group>
+    <group android:translateX="17" android:translateY="49" android:rotation="55.8">
+        <path android:fillColor="#000000" android:pathData="M-4,-3.40 H4 V-1.80 H-4 Z M-4,-0.80 H-0.6 V0.80 H-4 Z M0.6,-0.80 H4 V0.80 H0.6 Z M-4,1.80 H4 V3.40 H-4 Z "/>
+    </group>
+</vector>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bandera simplificada generada para ActiviteFinance -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="90dp"
+    android:height="60dp"
+    android:viewportWidth="90"
+    android:viewportHeight="60">
+    <path android:fillColor="#009C3B" android:pathData="M0,0 H90 V60 H0 Z"/>
+    <path android:fillColor="#FFDF00" android:pathData="M45,6 L84,30 L45,54 L6,30 Z"/>
+    <path android:fillColor="#002776" android:pathData="M32.000,30.000 a13.000,13.000 0 1,0 26.000,0 a13.000,13.000 0 1,0 -26.000,0 "/>
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="2.2" android:strokeLineCap="butt" android:pathData="M32.4,27.5 Q45,22.5 57.6,32.5"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M39.200,34.000 a0.800,0.800 0 1,0 1.600,0 a0.800,0.800 0 1,0 -1.600,0 M44.200,37.000 a0.800,0.800 0 1,0 1.600,0 a0.800,0.800 0 1,0 -1.600,0 M49.200,35.000 a0.800,0.800 0 1,0 1.600,0 a0.800,0.800 0 1,0 -1.600,0 M46.200,41.000 a0.800,0.800 0 1,0 1.600,0 a0.800,0.800 0 1,0 -1.600,0 M41.400,40.000 a0.600,0.600 0 1,0 1.200,0 a0.600,0.600 0 1,0 -1.200,0 "/>
+</vector>
