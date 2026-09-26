@@ -52,8 +52,9 @@ import kotlinx.coroutines.delay
 
 /** Número que "cuenta" suavemente hasta su nuevo valor cada vez que cambia. */
 @Composable
-fun AnimatedNumber(value: Double, style: TextStyle, modifier: Modifier = Modifier, prefix: String = "") {
-    val animated = remember { Animatable(value.toFloat()) }
+fun AnimatedNumber(value: Double, style: TextStyle, modifier: Modifier = Modifier, prefix: String = "", from: Double = value) {
+    // [from] permite que la primera vez cuente desde otro valor (p. ej. desde 0)
+    val animated = remember { Animatable(from.toFloat()) }
     LaunchedEffect(value) { animated.animateTo(value.toFloat(), tween(600, easing = FastOutSlowInEasing)) }
     // Al terminar mostramos el valor exacto (Double) para no perder precisión por el Float de la animación
     val shown = if (animated.isRunning) animated.value.toDouble() else value

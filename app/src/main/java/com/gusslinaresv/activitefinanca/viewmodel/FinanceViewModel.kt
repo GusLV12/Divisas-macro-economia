@@ -33,6 +33,12 @@ class FinanceViewModel : ViewModel() {
 
     fun setFavorite(code: String, favorite: Boolean) = UserPreferences.setFavorite(code, favorite)
 
+    /** true cuando la puerta de la bóveda de Inicio ya se animó en esta sesión. */
+    var vaultIntroShown = false
+
+    /** true = selección con burbujas flotantes; false = lista clásica. */
+    var bubbleMode by mutableStateOf(true)
+
     // --- Conversor ---
     var fromCode by mutableStateOf("USD")
     var toCode by mutableStateOf(UserPreferences.baseCurrency.value.takeIf { it != "USD" } ?: "MXN")

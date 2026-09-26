@@ -15,6 +15,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ViewList
+import androidx.compose.material.icons.filled.BubbleChart
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
@@ -33,7 +35,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.gusslinaresv.activitefinanca.data.UserPreferences
 import com.gusslinaresv.activitefinanca.data.model.Region
+import com.gusslinaresv.activitefinanca.ui.components.CurrencyBubbleField
 import com.gusslinaresv.activitefinanca.ui.components.CurrencyRow
 import com.gusslinaresv.activitefinanca.ui.components.StaggeredAppear
 import com.gusslinaresv.activitefinanca.ui.components.SwipeAction
@@ -41,21 +45,22 @@ import com.gusslinaresv.activitefinanca.ui.components.formatAmount
 import com.gusslinaresv.activitefinanca.ui.openCurrency
 import com.gusslinaresv.activitefinanca.viewmodel.FinanceViewModel
 
-/** Fragment 2 — Lista de divisas con búsqueda, filtros por región y deslizar para marcar favorito. */
+/** Fragment 2 — Divisas como burbujas flotantes (o lista), con búsqueda y filtros por región. */
 class CurrenciesFragment : Fragment() {
 
     private val viewModel: FinanceViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         themedContent {
-            CurrenciesScreen(viewModel) { requireContext().openCurrency(it) }
+            CurrenciesScreen(viewModel) { code, fromBubble -> requireContext().openCurrency(code, fade = fromBubble) }
         }
 }
 
 @Composable
-private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Unit) {
+private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (code: String, fromBubble: Boolean) -> Unit) {
     val favorites by viewModel.favorites.collectAsState()
     val base by viewModel.baseCurrency.collectAsState()
+    val learned by UserPreferences.learned.collectAsState()
     val list = viewModel.filtered()
 
     Column {
@@ -79,6 +84,15 @@ private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Un
         )
 
         LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            // Cambiar entre burbujas flotantes y lista clásica
+            item {
+                FilterChip(
+                    selected = viewModel.bubbleMode,
+                    onClick = { viewModel.bubbleMode = !viewModel.bubbleMode },
+                    label = { Text(if (viewModel.bubbleMode) "Burbujas" else "Lista") },
+                    leadingIcon = { Icon(if (viewModel.bubbleMode) Icons.Filled.BubbleChart else Icons.AutoMirrored.Filled.ViewList, contentDescription = null) }
+                )
+            }
             item {
                 FilterChip(selected = viewModel.region == null, onClick = { viewModel.region = null }, label = { Text("Todas") })
             }
@@ -91,6 +105,24 @@ private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Un
             }
         }
 
+        if (viewModel.bubbleMode) {
+            Text(
+                "El tamaño de cada burbuja es cuánto se negocia esa moneda en el mundo. Arrástralas, lánzalas y toca una para aprender sobre ella. 🏅 = lección completada (${learned.size}/${viewModel.currencies.size})",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
+            )
+            CurrencyBubbleField(
+                currencies = viewModel.currencies,
+                visibleCodes = list.map { it.code }.toSet(),
+                learned = learned,
+                onSelect = { onOpen(it.code, true) },
+                modifier = Modifier.fillMaxWidth().weight(1f)
+            )
+            if (list.isEmpty()) EmptySearch(viewModel.query)
+            return@Column
+        }
+
         Text(
             "Desliza una tarjeta hacia los lados para marcarla como favorita ⭐",
             style = MaterialTheme.typography.bodySmall,
@@ -98,14 +130,7 @@ private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Un
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
         )
 
-        if (list.isEmpty()) {
-            Text(
-                "No encontramos divisas para \"${viewModel.query}\" 🔍",
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().padding(32.dp)
-            )
-        }
+        if (list.isEmpty()) EmptySearch(viewModel.query)
 
         LazyColumn(
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp),
@@ -126,7 +151,7 @@ private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Un
                             currency = c,
                             rateText = "${formatAmount(viewModel.rateInBase(c, target))} $target",
                             isFavorite = isFav,
-                            onClick = { onOpen(c.code) },
+                            onClick = { onOpen(c.code, false) },
                             onToggleFavorite = { viewModel.toggleFavorite(c.code) }
                         )
                     }
@@ -134,4 +159,14 @@ private fun CurrenciesScreen(viewModel: FinanceViewModel, onOpen: (String) -> Un
             }
         }
     }
+}
+
+@Composable
+private fun EmptySearch(query: String) {
+    Text(
+        "No encontramos divisas para \"$query\" 🔍",
+        style = MaterialTheme.typography.bodyLarge,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth().padding(32.dp)
+    )
 }

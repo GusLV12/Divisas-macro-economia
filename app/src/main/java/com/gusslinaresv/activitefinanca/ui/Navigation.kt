@@ -1,5 +1,6 @@
 package com.gusslinaresv.activitefinanca.ui
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import androidx.compose.material.icons.Icons
@@ -28,7 +29,7 @@ enum class MainTab(
     val inBottomBar: Boolean,
     val create: () -> Fragment,
 ) {
-    HOME("Inicio", "ActiviteFinance", Icons.Filled.Home, true, ::HomeFragment),
+    HOME("Inicio", "Bóveda de divisas", Icons.Filled.Home, true, ::HomeFragment),
     CURRENCIES("Divisas", "Divisas del mundo", Icons.Filled.Public, true, ::CurrenciesFragment),
     CONVERTER("Conversor", "Conversor", Icons.Filled.CurrencyExchange, true, ::ConverterFragment),
     LEARN("Aprende", "Aprende macroeconomía", Icons.Filled.School, true, ::LearnFragment),
@@ -43,8 +44,10 @@ interface MainNavigator {
 
 fun Fragment.mainNavigator(): MainNavigator? = activity as? MainNavigator
 
-fun Context.openCurrency(code: String) = startActivity(
-    Intent(this, CurrencyDetailActivity::class.java).putExtra(CurrencyDetailActivity.EXTRA_CURRENCY_CODE, code)
+/** Abre el detalle de una divisa. Con [fade] la transición es un desvanecido (continúa la animación de la burbuja). */
+fun Context.openCurrency(code: String, fade: Boolean = false) = startActivity(
+    Intent(this, CurrencyDetailActivity::class.java).putExtra(CurrencyDetailActivity.EXTRA_CURRENCY_CODE, code),
+    if (fade) ActivityOptions.makeCustomAnimation(this, android.R.anim.fade_in, android.R.anim.fade_out).toBundle() else null
 )
 
 fun Context.openConcept(id: String) = startActivity(

@@ -22,6 +22,7 @@ object UserPreferences {
     private const val KEY_THEME = "theme_mode"
     private const val KEY_ONBOARDING = "onboarding_done"
     private const val KEY_QUIZ_RECORD = "quiz_record"
+    private const val KEY_LEARNED = "learned_currencies"
 
     private lateinit var prefs: SharedPreferences
 
@@ -37,12 +38,17 @@ object UserPreferences {
     private val _quizRecord = MutableStateFlow(0)
     val quizRecord: StateFlow<Int> = _quizRecord.asStateFlow()
 
+    // Divisas cuya lección (detalle + mini-quiz) se completó
+    private val _learned = MutableStateFlow<Set<String>>(emptySet())
+    val learned: StateFlow<Set<String>> = _learned.asStateFlow()
+
     fun init(context: Context) {
         prefs = context.applicationContext.getSharedPreferences(FILE, Context.MODE_PRIVATE)
         _favorites.value = prefs.getStringSet(KEY_FAVORITES, setOf("USD", "EUR"))!!.toSet()
         _baseCurrency.value = prefs.getString(KEY_BASE, "MXN")!!
         _themeMode.value = ThemeMode.valueOf(prefs.getString(KEY_THEME, ThemeMode.SYSTEM.name)!!)
         _quizRecord.value = prefs.getInt(KEY_QUIZ_RECORD, 0)
+        _learned.value = prefs.getStringSet(KEY_LEARNED, emptySet())!!.toSet()
     }
 
     val onboardingDone: Boolean get() = prefs.getBoolean(KEY_ONBOARDING, false)
@@ -77,6 +83,13 @@ object UserPreferences {
         _quizRecord.value = score
         prefs.edit { putInt(KEY_QUIZ_RECORD, score) }
         return true
+    }
+
+    fun markLearned(code: String) {
+        if (code in _learned.value) return
+        val updated = _learned.value + code
+        _learned.value = updated
+        prefs.edit { putStringSet(KEY_LEARNED, updated) }
     }
 
     fun resetQuizRecord() {

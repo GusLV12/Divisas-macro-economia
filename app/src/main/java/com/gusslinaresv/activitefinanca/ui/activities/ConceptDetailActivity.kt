@@ -46,6 +46,7 @@ import com.gusslinaresv.activitefinanca.data.ConceptRepository
 import com.gusslinaresv.activitefinanca.data.model.Concept
 import com.gusslinaresv.activitefinanca.ui.components.ConceptSimulator
 import com.gusslinaresv.activitefinanca.ui.components.DetailTopBar
+import com.gusslinaresv.activitefinanca.ui.components.Reveal
 import com.gusslinaresv.activitefinanca.ui.theme.ActiviteFinancaTheme
 
 /** Activity 5 — Lección de un concepto macroeconómico con ejemplo y simulador. */
@@ -109,20 +110,20 @@ private fun ConceptDetailScreen(concept: Concept, onBack: () -> Unit) {
             }
 
             items(concept.body) { paragraph ->
-                Text(paragraph, style = MaterialTheme.typography.bodyLarge)
+                Reveal { Text(paragraph, style = MaterialTheme.typography.bodyLarge) }
             }
 
             item {
-                Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = scheme.tertiaryContainer)) {
+                Reveal { Card(shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = scheme.tertiaryContainer)) {
                     Column(Modifier.padding(18.dp)) {
                         Text("📌 Ejemplo práctico", style = MaterialTheme.typography.titleMedium)
                         Spacer(Modifier.height(6.dp))
                         Text(concept.example, style = MaterialTheme.typography.bodyLarge)
                     }
-                }
+                } }
             }
 
-            item { ConceptSimulator(concept.simulator) }
+            item { Reveal { ConceptSimulator(concept.simulator) } }
 
             item { Text("¿Sabías que…?", style = MaterialTheme.typography.titleLarge) }
             item {

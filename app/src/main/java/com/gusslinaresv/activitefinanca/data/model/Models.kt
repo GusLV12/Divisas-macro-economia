@@ -29,6 +29,9 @@ data class Currency(
     val story: String,
     val facts: List<String>,
     val history: List<Double>,
+    /** % de participación en las operaciones del mercado de divisas (encuesta trienal BIS 2022, suma 200 %). */
+    val tradeShare: Double,
+    val milestones: List<Milestone>,
 ) {
     /** Variación del último mes en %, vista como fortaleza de la divisa frente al USD (positivo = se apreció). */
     val monthlyChangePercent: Double
@@ -38,6 +41,9 @@ data class Currency(
             return (prev / now - 1.0) * 100.0
         }
 }
+
+/** Hito histórico de una divisa, mostrado en la línea del tiempo. */
+data class Milestone(val year: Int, val text: String)
 
 data class Concept(
     val id: String,

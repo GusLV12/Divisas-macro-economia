@@ -2,6 +2,7 @@ package com.gusslinaresv.activitefinanca.data
 
 import com.gusslinaresv.activitefinanca.R
 import com.gusslinaresv.activitefinanca.data.model.Currency
+import com.gusslinaresv.activitefinanca.data.model.Milestone
 import com.gusslinaresv.activitefinanca.data.model.Region
 import kotlin.random.Random
 
@@ -27,6 +28,13 @@ object CurrencyRepository {
                 "El petróleo y el oro se cotizan internacionalmente en dólares.",
             ),
             history = history("USD", 1.0, 0.0),
+            tradeShare = 88.5,
+            milestones = listOf(
+                Milestone(1792, "La Ley de Acuñación crea el dólar estadounidense"),
+                Milestone(1913, "Se funda la Reserva Federal"),
+                Milestone(1944, "Los acuerdos de Bretton Woods lo convierten en el eje del sistema monetario, atado al oro"),
+                Milestone(1971, "EE. UU. termina la convertibilidad del dólar en oro"),
+            ),
         ),
         Currency(
             code = "EUR", name = "Euro", nickname = "Euro", symbol = "€",
@@ -41,6 +49,13 @@ object CurrencyRepository {
                 "Algunos países fuera de la UE, como Montenegro o Kosovo, lo usan sin ser miembros.",
             ),
             history = history("EUR", 0.86, 0.018),
+            tradeShare = 30.5,
+            milestones = listOf(
+                Milestone(1992, "El Tratado de Maastricht fija las reglas para crear una moneda común"),
+                Milestone(1999, "Nace el euro como moneda electrónica en 11 países"),
+                Milestone(2002, "Llegan los billetes y monedas de euro"),
+                Milestone(2023, "Croacia adopta el euro"),
+            ),
         ),
         Currency(
             code = "MXN", name = "Peso mexicano", nickname = "Súper peso", symbol = "$",
@@ -55,6 +70,13 @@ object CurrencyRepository {
                 "Los billetes actuales son de polímero en su mayoría, más duraderos que los de papel.",
             ),
             history = history("MXN", 18.4, 0.025),
+            tradeShare = 1.5,
+            milestones = listOf(
+                Milestone(1535, "Se funda la Casa de Moneda de México, la primera de América"),
+                Milestone(1925, "Se crea el Banco de México"),
+                Milestone(1993, "Nace el \"nuevo peso\", quitando tres ceros"),
+                Milestone(1994, "Banxico obtiene su autonomía y el peso comienza a flotar libremente"),
+            ),
         ),
         Currency(
             code = "CNY", name = "Yuan (renminbi)", nickname = "Redback", symbol = "¥",
@@ -69,6 +91,13 @@ object CurrencyRepository {
                 "China desarrolla un yuan digital (e-CNY) emitido por el banco central.",
             ),
             history = history("CNY", 7.12, 0.008),
+            tradeShare = 7.0,
+            milestones = listOf(
+                Milestone(1024, "Aparece el jiaozi, uno de los primeros papeles moneda del mundo"),
+                Milestone(1948, "Se crea el renminbi"),
+                Milestone(2005, "China deja de fijar el yuan al dólar"),
+                Milestone(2016, "El yuan entra en la canasta de Derechos Especiales de Giro del FMI"),
+            ),
         ),
         Currency(
             code = "JPY", name = "Yen japonés", nickname = "Yen", symbol = "¥",
@@ -83,6 +112,13 @@ object CurrencyRepository {
                 "Cuando hay pánico en los mercados, el yen tiende a fortalecerse.",
             ),
             history = history("JPY", 148.0, 0.028),
+            tradeShare = 16.7,
+            milestones = listOf(
+                Milestone(1871, "La Ley de Moneda Nueva crea el yen"),
+                Milestone(1882, "Se funda el Banco de Japón"),
+                Milestone(1949, "El yen se fija en 360 por dólar"),
+                Milestone(2016, "El Banco de Japón aplica tasas de interés negativas"),
+            ),
         ),
         Currency(
             code = "GBP", name = "Libra esterlina", nickname = "Cable", symbol = "£",
@@ -97,6 +133,13 @@ object CurrencyRepository {
                 "Escocia e Irlanda del Norte tienen bancos comerciales que emiten sus propios billetes de libra.",
             ),
             history = history("GBP", 0.74, 0.017),
+            tradeShare = 12.9,
+            milestones = listOf(
+                Milestone(800, "Surgen los peniques de plata anglosajones: 240 pesaban una libra"),
+                Milestone(1694, "Se funda el Banco de Inglaterra"),
+                Milestone(1971, "La libra se decimaliza: 100 peniques por libra"),
+                Milestone(1992, "El \"miércoles negro\" saca a la libra del mecanismo cambiario europeo"),
+            ),
         ),
         Currency(
             code = "CHF", name = "Franco suizo", nickname = "Swissie", symbol = "Fr.",
@@ -111,6 +154,13 @@ object CurrencyRepository {
                 "El código CHF viene de Confoederatio Helvetica, el nombre latino de Suiza.",
             ),
             history = history("CHF", 0.80, 0.017),
+            tradeShare = 5.2,
+            milestones = listOf(
+                Milestone(1850, "El franco unifica las monedas de los cantones suizos"),
+                Milestone(1907, "Comienza a operar el Banco Nacional Suizo"),
+                Milestone(2011, "Se fija un tope de 1.20 francos por euro"),
+                Milestone(2015, "Se retira el tope y el franco se dispara"),
+            ),
         ),
         Currency(
             code = "CAD", name = "Dólar canadiense", nickname = "Loonie", symbol = "C$",
@@ -125,6 +175,13 @@ object CurrencyRepository {
                 "Sus billetes son de polímero desde 2011.",
             ),
             history = history("CAD", 1.38, 0.014),
+            tradeShare = 6.2,
+            milestones = listOf(
+                Milestone(1858, "Canadá adopta el dólar"),
+                Milestone(1935, "Se funda el Banco de Canadá"),
+                Milestone(1987, "Aparece la moneda de un dólar con el colimbo: el \"loonie\""),
+                Milestone(2011, "Llegan los billetes de polímero"),
+            ),
         ),
         Currency(
             code = "BRL", name = "Real brasileño", nickname = "Real", symbol = "R$",
@@ -139,6 +196,13 @@ object CurrencyRepository {
                 "Los animales de los billetes representan la fauna brasileña, como el jaguar y el guacamayo.",
             ),
             history = history("BRL", 5.35, 0.03),
+            tradeShare = 0.9,
+            milestones = listOf(
+                Milestone(1986, "El Plan Cruzado intenta frenar la inflación"),
+                Milestone(1993, "La inflación anual supera el 2 000 %"),
+                Milestone(1994, "El Plan Real crea la moneda actual y estabiliza los precios"),
+                Milestone(2020, "El Banco Central lanza Pix, su sistema de pagos instantáneos"),
+            ),
         ),
         Currency(
             code = "KRW", name = "Won surcoreano", nickname = "Won", symbol = "₩",
@@ -153,6 +217,13 @@ object CurrencyRepository {
                 "No hay monedas en uso por debajo de 10 wones.",
             ),
             history = history("KRW", 1390.0, 0.022),
+            tradeShare = 1.9,
+            milestones = listOf(
+                Milestone(1950, "Se funda el Banco de Corea"),
+                Milestone(1962, "Se introduce el won actual"),
+                Milestone(1997, "La crisis asiática hunde al won y Corea recibe un rescate del FMI"),
+                Milestone(1998, "Millones de coreanos donan su oro para pagar la deuda"),
+            ),
         ),
         Currency(
             code = "INR", name = "Rupia india", nickname = "Rupia", symbol = "₹",
@@ -167,6 +238,13 @@ object CurrencyRepository {
                 "La rupia también circula en Bután y Nepal.",
             ),
             history = history("INR", 88.3, 0.009),
+            tradeShare = 1.6,
+            milestones = listOf(
+                Milestone(1540, "Sher Shah Suri acuña la primera rupia de plata"),
+                Milestone(1935, "Se funda el Banco de la Reserva de la India"),
+                Milestone(2010, "Se adopta el símbolo ₹"),
+                Milestone(2016, "Se retiran de golpe los billetes de 500 y 1 000 rupias"),
+            ),
         ),
         Currency(
             code = "AUD", name = "Dólar australiano", nickname = "Aussie", symbol = "A$",
@@ -181,6 +259,13 @@ object CurrencyRepository {
                 "Los billetes tienen una ventana transparente muy difícil de falsificar.",
             ),
             history = history("AUD", 1.52, 0.02),
+            tradeShare = 6.4,
+            milestones = listOf(
+                Milestone(1960, "Se funda el Banco de la Reserva de Australia"),
+                Milestone(1966, "El dólar australiano reemplaza a la libra"),
+                Milestone(1983, "El dólar australiano comienza a flotar libremente"),
+                Milestone(1988, "Australia lanza los primeros billetes de polímero del mundo"),
+            ),
         ),
     )
 

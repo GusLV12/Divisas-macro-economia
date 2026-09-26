@@ -4,7 +4,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -95,7 +95,8 @@ fun InteractiveLineChart(
                     detectTapGestures { pick(it.x) }
                 }
                 .pointerInput(values) {
-                    detectDragGestures { change, _ ->
+                    // Solo arrastre horizontal: el vertical se deja al scroll de la pantalla
+                    detectHorizontalDragGestures { change, _ ->
                         val step = size.width.toFloat() / (values.size - 1)
                         selected = kotlin.math.round(change.position.x / step).toInt().coerceIn(0, values.lastIndex)
                     }
